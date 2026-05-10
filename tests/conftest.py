@@ -1,4 +1,9 @@
+import base64
+import os
+import time
+
 import pytest
+import pytest_html.extras
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -11,10 +16,12 @@ def get_driver():
     return driver
 
 @pytest.fixture(scope ='function')
-def get_driver1():
+def driver():
     driver = webdriver.Chrome()
     driver.get("https://www.foundit.in/")
     driver.maximize_window()
+    driver.implicitly_wait(10)
+
     yield driver
     driver.quit()
 
@@ -56,3 +63,24 @@ def get_driver4():
     driver.get("https://www.flipkart.com/")
     yield driver
     driver.quit()
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+    if report.when == "call" and report.failed:
+        driver = item.funcargs.get("driver")
+        if driver:
+            folder= "screenshots"
+            os.makedirs(folder, exist_ok=True)
+            file_path = os.path.join(folder, f"{item.name}_{int(time.time())}.png")
+            driver.save_screenshot(file_path)
+
+            with open(file_path, "rb") as image_file:
+                encoded_image = base64.b64encode(image_file.read()).decode()
+
+            # attach screenshot to the report
+            extra = getattr(report, "extra", [])
+            extra.append(pytest_html.extras.png(encoded_image))
+            report.extra = extra
+

@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 def test_filter_functions(get_driver4):
     driver = get_driver4
-    time.sleep(5)
+    #time.sleep(5)
     driver.find_element(By.XPATH, "//span[@role='button' and text()='✕']").click()
     search_box = driver.find_element(By.XPATH, "//input[@name='q']")
     search_box.send_keys("shoes")
@@ -32,9 +32,9 @@ def test_filter_functions(get_driver4):
     flag = driver.find_element(By.XPATH, "//a[text()='Login']").is_displayed()
     print(flag)
 
-def test_get_attribbute(get_driver1):
-    driver = get_driver1
-    time.sleep(10)
+def test_get_attribbute(driver):
+    driver = driver
+
     companies = driver.find_elements(By.XPATH, "//a[@target='_blank']/img")
 
     for company in companies:
@@ -58,15 +58,16 @@ def test_is_enabled():
 
     driver = webdriver.Chrome(option)
     driver.get("https://retail.santander.co.uk/olb/app/logon/access/#/logon")
-    time.sleep(5)
+    time.sleep(10)
 
     cookie_banner = driver.find_element(By.XPATH, "//div[@aria-label='Cookie banner']//h2[text()='We use cookies to give you the best online experience']")
+
     if cookie_banner.is_displayed():
         print("The cookie banner is displayed")
         driver.find_element(By.XPATH, "//button[@id='onetrust-accept-btn-handler' and text()='Accept all' ]").click()
     else:
         print("The cookie banner is not displayed")
-    time.sleep(5)
+    time.sleep(10)
     log_on_btn = driver.find_element(By.XPATH, "//span[text()='Log on']/parent::button")
 
     assert log_on_btn.is_enabled() == False, "Logon button is enabled when input fields are empty"
