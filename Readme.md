@@ -47,4 +47,51 @@ key board actions
 by using send keys 
 you can perform keyboard actions
 
+Wait Statements
+----------------
+Waits are used for synchronization
+
+Synchronizations --> 
+lets consider the browser and selenium should works in a same speed 
+
+selenium will gives commands contiuesly to the browser
+but browser have lot of dependencies to perform the task
+
+browser depends on the network, browser depends on the application speed
+browser depends on application behaviour
+
+Types of waits
+-----------------
+Implicit wait-->
+    implicit wait will apply the wait for all elements 
+it can be declared in any one place of scripting 
+after that it will apply wait for upcomming elemnets
+
+Explicit wait-->
+Explicit wait will have more control where we can use the wait
+for particular element in particular condition we can apply the wait statement
+wait is applied for particular element not for all the elements
+
+
+fluent wait
+
+sleep --> static wait, we shouldn't use this
+
+
+Assignment
+--------------
+launch the make my trip
+check one way is selected
+select from and to 
+select departure date (1month later from current date)
+return date should be 6 month later from the departure date
+Select special fares
+search
+
+I want to get all the flight name price
+departure time and reaching time
+
+
+
+
 

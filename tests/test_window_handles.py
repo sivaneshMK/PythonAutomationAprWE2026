@@ -3,11 +3,11 @@ import time
 from selenium.webdriver.common.by import By
 
 
-def test_company_windows(get_driver1):
-    driver = get_driver1
-    time.sleep(10)
+def test_company_windows(driver):
+    driver = driver
+
     companies = driver.find_elements(By.XPATH, "//a[@class='flex items-center ']/img")
-    print(len(companies))
+    print("No of companies: ",len(companies))
     companies_list = []
     for company in companies:
         title = company.get_attribute("title")
@@ -19,8 +19,6 @@ def test_company_windows(get_driver1):
     for company in companies_list:
         xpath = "//a[@class='flex items-center ']/img[@title='"+company+"']"
         driver.find_element(By.XPATH, xpath).click()
-
-    time.sleep(30)
 
     # get current window reference
     parent_window = driver.current_window_handle
