@@ -15,11 +15,11 @@ pipeline{
             }
             stage('Setup Python Environment'){
                 steps{
-                    sh'''
-                    python3 -m venv ${VENV}
-                    .${VENV}/bin/activate
+                    bat'''
+                    python3 -m venv venv
+                    call venv\\Script\\activate
                     pip install --upgrade pip
-                    pip install requirements.txt
+                    pip install -r requirements.txt
 
                     '''
                 }
@@ -28,8 +28,8 @@ pipeline{
         stage('Run Pytest'){
 
             steps{
-                sh'''
-                .${VENV}/bin/activate
+                bat'''
+                call venv\\Script\\activate
                 pytest --html=report.html --self-contained-html
                 '''
             }
