@@ -9,7 +9,7 @@ pipeline{
         stages{
             stage('Checkout'){
                 steps{
-                    git branch: "master". url: "https://github.com/sivaneshMK/PythonAutomationAprWE2026.git"
+                    git branch: "master", url: "https://github.com/sivaneshMK/PythonAutomationAprWE2026.git"
                 }
 
             }
@@ -51,7 +51,6 @@ pipeline{
             echo "Test is Passed"
 
         }
-
     }
 
 }
