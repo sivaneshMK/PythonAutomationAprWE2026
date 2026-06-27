@@ -17,7 +17,7 @@ pipeline{
                 steps{
                     bat'''
                     python3 -m venv venv
-                    call venv\\Script\\activate
+                    call venv\\Scripts\\activate
                     pip install --upgrade pip
                     pip install -r requirements.txt
 
@@ -29,7 +29,7 @@ pipeline{
 
             steps{
                 bat'''
-                call venv\\Script\\activate
+                call venv\\Scripts\\activate
                 pytest --html=report.html --self-contained-html
                 '''
             }
