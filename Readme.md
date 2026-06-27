@@ -91,6 +91,29 @@ search
 I want to get all the flight name price
 departure time and reaching time
 
+Framework
+-----------
+Structured programming 
+set of rules to create programs
+it will help to improve the code maintainability
+it will reduce the duplication
+it will improve code re-usability
+
+Features of Automation Framework
+---------------------------------
+environment configurations(json/yaml) --> it will help you to execute the test in across the environments
+POM --> Page object Model --> we going to create a element repo based the page(page class)
+it will hold all the elements in respective pages
+it will help you to access the elements from one place
+if any error is on the element we can fix it in one place and it reflect where ur using this
+screenshot on failure
+attach the screenshot in to the report
+pytest-html/allure/extend report
+Data driven
+design pattern(single tone design pattern)
+requirements.txt
+DB connection with python
+API test
 
 
 
