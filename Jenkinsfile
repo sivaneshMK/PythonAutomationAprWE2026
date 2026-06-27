@@ -30,7 +30,7 @@ pipeline{
             steps{
                 bat'''
                 call venv\\Scripts\\activate
-                pytest --html=report.html --self-contained-html
+                pytest -m regression --html=report.html --self-contained-html
                 '''
             }
         }
